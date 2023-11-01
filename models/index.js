@@ -16,15 +16,15 @@ Category.hasMany(Product, {
 })
 
 // Products belongToMany Tags (through ProductTag)
-Product.belongsToMany(ProductTag, {
-    through: "product_id",
+Product.belongsToMany(Tag, {
+    through: ProductTag, // Use the ProductTag table
     onDelete: 'CASCADE'
 });
 
 
 // Tags belongToMany Products (through ProductTag)
-Tag.belongsToMany(ProductTag, {
-    through: "tag_id",
+Tag.belongsToMany(Product, {
+    through: ProductTag,
     onDelete: 'CASCADE'
 });
 
