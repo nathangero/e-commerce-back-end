@@ -41,6 +41,21 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     // update a tag's name by its `id` value
+    try {
+        const data = await Tag.update(req.body, {
+            where: {
+              id: req.params.id,
+            }
+        });
+
+        if (data[0]) {
+            res.status(200).json({ message: 'Changed tag name' });
+        } else {
+            res.status(404).json({ message: "Tag doesn't exist" });
+        }
+    } catch (error) {
+        res.status(500).json(error);
+    }
 });
 
 router.delete('/:id', async (req, res) => {
