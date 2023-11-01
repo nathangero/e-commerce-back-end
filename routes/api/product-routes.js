@@ -34,7 +34,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // create new product
-router.post('/', async (req, res) => {
+router.post('/', (req, res) => {
     /* req.body should look like this...
         {
             product_name: "Basketball",
@@ -66,7 +66,7 @@ router.post('/', async (req, res) => {
 });
 
 // update product
-router.put('/:id', async (req, res) => {
+router.put('/:id', (req, res) => {
     // update product data
     Product.update(req.body, {
         where: {
@@ -112,6 +112,20 @@ router.put('/:id', async (req, res) => {
 
 router.delete('/:id', async (req, res) => {
     // delete one product by its `id` value
+    try {
+        const data = await Product.destroy({
+            where: {
+                id: req.params.id
+            }
+        })
+        if (data) {
+            res.status(200).json({ message: 'Deleted category' });
+        } else {
+            res.status(404).json({ message: "Category doesn't exist" });
+        }
+    } catch (error) {
+        res.status(500).json(error)
+    }
 });
 
 module.exports = router;
