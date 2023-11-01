@@ -14,6 +14,7 @@ Product.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
+      autoIncrement: true
     },
     product_name: {
       type: DataTypes.STRING,
@@ -36,6 +37,10 @@ Product.init(
     },
     category_id: {
       type: DataTypes.INTEGER,
+      references: {
+        model: "category",
+        key: "id"
+      }
     }
   },
   {
@@ -46,10 +51,5 @@ Product.init(
     modelName: 'product',
   }
 );
-
-Product.belongsTo(Category, {
-  as: 'category',
-  foreignKey: 'category_id'
-});
 
 module.exports = Product;

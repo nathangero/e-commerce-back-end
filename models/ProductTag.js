@@ -15,10 +15,18 @@ ProductTag.init(
       primaryKey: true,
     },
     product_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: "product",
+        key: "id"
+      }
     },
     tag_id: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      references: {
+        model: "tag",
+        key: "id"
+      }
     }
   },
   {
@@ -29,15 +37,5 @@ ProductTag.init(
     modelName: 'product_tag',
   }
 );
-
-ProductTag.belongsTo(Product, {
-  as: 'product',
-  foreignKey: 'product_id'
-});
-
-ProductTag.belongsTo(Tag, {
-  as: 'tag',
-  foreignKey: 'tag_id'
-});
 
 module.exports = ProductTag;
