@@ -1,12 +1,25 @@
 const { Model, DataTypes } = require('sequelize');
 
 const sequelize = require('../config/connection');
+const Product = require('./Product');
+const Tag = require('./Tag');
 
 class ProductTag extends Model {}
 
 ProductTag.init(
   {
-    // define columns
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+    },
+    product_id: {
+      type: DataTypes.INTEGER
+    },
+    tag_id: {
+      type: DataTypes.INTEGER
+    }
   },
   {
     sequelize,
@@ -16,5 +29,15 @@ ProductTag.init(
     modelName: 'product_tag',
   }
 );
+
+ProductTag.belongsTo(Product, {
+  as: 'product',
+  foreignKey: 'product_id'
+});
+
+ProductTag.belongsTo(Tag, {
+  as: 'tag',
+  foreignKey: 'tag_id'
+});
 
 module.exports = ProductTag;
