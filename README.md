@@ -2,7 +2,13 @@
 
 ## Description
 
-The purpose
+The purpose of this repo is to connect a front-end client to a MySQL database. The front-end client I used was Insomnia for quick and easy RESTful API endpoint testing. This was to practice creating a SQL database, but using it via the node package Sequelize. I used the Sequelize node package to create tables via JavaScript classes inheriting Sequelize Models, make relationships between tables, and create http requests via RESTful API endpoints. 
+
+This was a pretty fun project to do! I've used the `mysql2` node package before and while that's good, it's no where on the same level as Sequelize in terms of robustness. I would definitely use the Sequelize package again, especially for a full-stack application.
+
+### Database breakdown
+
+The database schema is to emulate an e-commerce back end, which contains tables of Category, Product, and Tag. Every Product belongs to a Category, every Category has many Products, and Proucts and Tags have a many-to-many relationship through a table called ProductTag.
 
 ## Installation
 
