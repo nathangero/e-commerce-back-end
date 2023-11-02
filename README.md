@@ -11,6 +11,7 @@
 
 ## Walkthrough Video
 
+https://github.com/nathangero/e-commerce-back-end/assets/25491849/0c829b19-ed36-4289-95d0-00279383d964
 
 ## Learning Points
 
