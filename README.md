@@ -82,6 +82,22 @@ https://github.com/nathangero/e-commerce-back-end/assets/25491849/0c829b19-ed36-
 * Using a many-to-many relationship pretty useful to connect at least 2 tables together. I was surprised how simple it was to see all the relationships between the different Prodcuts and their Tags via the ProductTag table.
 * Using a `.env` file is a nice easy way to keep credentials locally.
 
+## Code Snippet
+
+This code blew my mind when it came to establishing relationships between the Product and Tag tables. It was so easy to make a many-to-many relationship
+```js
+Product.belongsToMany(Tag, {
+    through: ProductTag,
+    onDelete: 'CASCADE'
+});
+
+
+Tag.belongsToMany(Product, {
+    through: ProductTag,
+    onDelete: 'CASCADE'
+});
+```
+
 ## Credits
 
 ### Resources
